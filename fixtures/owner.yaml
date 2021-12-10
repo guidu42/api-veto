@@ -1,0 +1,10 @@
+App\Entity\Owner:
+  owner_{1..110}:
+    firstName: "<firstName('male'|'female')>"
+    lastName: "<lastName()>"
+    birthDate: "<dateTimeThisCentury('now')>"
+
+  ownerWithNoAnimals{1..110}:
+    firstName: "<firstName('male'|'female')>"
+    lastName: "<lastName()>"
+    birthDate: "<dateTimeThisCentury('now')>"

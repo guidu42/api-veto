@@ -1,0 +1,12 @@
+App\Entity\Species:
+  species_{1..50}:
+    name (unique): "<animal()>"
+    discoveredSince: "80%? <dateTimeBetween('-1500 years', 'now')>"
+
+  speciesWithNoAnimals_{1..10}:
+    name (unique): "<animal()>"
+    discoveredSince: "80%? <dateTimeBetween('-1500 years', 'now')>"
+
+#  speciesRealName_{chat, chien, cheval, oiseau, serpent}:
+#    name: "<current()>"
+#    discoveredSince: "<dateTimeBetween('0000-01-01', '0000-01-02')>"

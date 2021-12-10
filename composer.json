@@ -4,14 +4,17 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "api-platform/core": "^2.6",
         "composer/package-versions-deprecated": "1.11.99.4",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
+        "lexik/jwt-authentication-bundle": "^2.14",
+        "nelmio/cors-bundle": "^2.2",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.2",
         "sensio/framework-extra-bundle": "^6.1",
@@ -45,6 +48,8 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "edwindayot/faker-provider-animals": "^2.0",
+        "hautelook/alice-bundle": "^2.9",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.4.*",
         "symfony/css-selector": "5.4.*",
@@ -54,6 +59,12 @@
         "symfony/stopwatch": "5.4.*",
         "symfony/web-profiler-bundle": "5.4.*"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/WedgeSama/Faker-Provider-Animals.git"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": {
