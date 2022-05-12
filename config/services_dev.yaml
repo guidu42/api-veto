@@ -4,5 +4,6 @@ services:
     autoconfigure: true
 
   FakerProviderAnimals\Animals: ~
+  App\Fixtures\Processors\AnimalProcessor: ~
   App\Fixtures\:
     resource: '../src/Fixtures/'

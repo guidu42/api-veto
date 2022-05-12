@@ -2,7 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\BreedRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
     collectionOperations: ['get'],
     itemOperations: ['get']
 )]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
+#[ApiFilter(OrderFilter::class, properties: ['name', 'id', 'species'])]
 class Breed
 {
     #[ORM\Id]

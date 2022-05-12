@@ -1,6 +1,6 @@
 App\Entity\Animal:
-  animal_{1..200}:
+  animal_{1..1}:
     name: "<firstName()>"
     owner: '95%? @owner_*'
-    breeds: '<randomDigitNot(0)>x @breeds_*'
     gender: '<randomElementProba(["m","f","o"], [90,5,5])>'
+    species: '@species_*'

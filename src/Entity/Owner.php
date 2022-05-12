@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\OwnerRepository;
 use DateTime;
 use DateTimeInterface;
@@ -19,6 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     collectionOperations: [
         'get',
         'post' => [
+            "security" => "is_granted('ROLE_ADMIN_OWNER')",
             'denormalization_context' => [
                 'groups' => ['owner_creation']
             ]
@@ -30,12 +34,13 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'groups' => ['full_owner']
             ]
         ],
-        'put',
-        'delete',
+        'put' => ["security" => "is_granted('ROLE_ADMIN_OWNER')"],
+        'delete' => ["security" => "is_granted('ROLE_ADMIN_OWNER')"],
         'patch'
     ],
     attributes: [
         'pagination_items_per_page' => 50,
+        "security" => "is_granted('ROLE_USER')"
     ],
     denormalizationContext: [
         'groups' => ['full_owner']
@@ -44,6 +49,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         'groups' => ['lite_owner'],
     ]
 )]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial'])]
+#[ApiFilter(OrderFilter::class, properties: ['firstName', 'lastName', 'id', 'birthDate'])]
 class Owner
 {
 
@@ -71,6 +78,7 @@ class Owner
     private DateTimeInterface $birthDate;
 
     #[ORM\OneToMany(mappedBy: "owner", targetEntity: Animal::class, orphanRemoval: true)]
+    #[Groups(['full_owner'])]
     private Collection $animals;
 
     public function __construct()

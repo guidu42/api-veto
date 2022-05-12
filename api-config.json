@@ -1,0 +1,6 @@
+{
+  "npmName": "animal-api-angular",
+  "snapshot": false,
+  "ngVersion": "11.0.0",
+  "fileNaming": "kebab-case"
+}
